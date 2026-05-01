@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="cell-content" th:fragment="celda" th:with="celda=${celda}">
+        <div th:if="${celda.esCacatua}">
+            <img th:src="@{/images/cacatua_sulfurea.PNG}" class="cell-image" alt="Cacatua">
+        </div>
+        <div th:if="${celda.esSemilla}">
+            <img th:src="@{/images/semilla_girasol.jpg}" class="cell-image" alt="Semilla">
+        </div>
+        <div th:if="${!celda.esCacatua and !celda.esSemilla}"
+             th:style="'width: 100%; height: 100%; background-color: ' + ${celda.colorHex}">
+        </div>
+    </div>
+</body>
+</html>

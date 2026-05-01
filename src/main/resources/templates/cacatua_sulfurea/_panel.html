@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="panel-section" th:fragment="panel" th:with="tableroDTO=${tableroDTO}">
+        <h3>Control</h3>
+
+        <div class="energy-display">
+            Energia: <span th:text="${tableroDTO.picotazosRestantes}"></span>
+        </div>
+
+        <div class="status-display"
+             th:classappend="${tableroDTO.estadoJuego == 'VICTORIA'} ? 'status-victoria' : (${tableroDTO.estadoJuego == 'DERROTA'} ? 'status-derrota' : 'status-en-curso')">
+            <span th:text="${tableroDTO.estadoJuego}"></span>
+        </div>
+
+        <div class="direction-buttons">
+            <div></div>
+            <form th:action="@{/cacatua_sulfurea/mover}" method="post" style="display: inline;">
+                <input type="hidden" name="direccion" value="ARRIBA">
+                <button type="submit" class="direction-btn"
+                        th:disabled="${tableroDTO.estadoJuego != 'EN_CURSO'}">↑</button>
+            </form>
+            <div></div>
+
+            <form th:action="@{/cacatua_sulfurea/mover}" method="post" style="display: inline;">
+                <input type="hidden" name="direccion" value="IZQUIERDA">
+                <button type="submit" class="direction-btn"
+                        th:disabled="${tableroDTO.estadoJuego != 'EN_CURSO'}">←</button>
+            </form>
+            <div></div>
+            <form th:action="@{/cacatua_sulfurea/mover}" method="post" style="display: inline;">
+                <input type="hidden" name="direccion" value="DERECHA">
+                <button type="submit" class="direction-btn"
+                        th:disabled="${tableroDTO.estadoJuego != 'EN_CURSO'}">→</button>
+            </form>
+
+            <div></div>
+            <form th:action="@{/cacatua_sulfurea/mover}" method="post" style="display: inline;">
+                <input type="hidden" name="direccion" value="ABAJO">
+                <button type="submit" class="direction-btn"
+                        th:disabled="${tableroDTO.estadoJuego != 'EN_CURSO'}">↓</button>
+            </form>
+            <div></div>
+        </div>
+
+        <form th:action="@{/cacatua_sulfurea/reiniciar}" method="post">
+            <button type="submit" class="btn-reiniciar">Reiniciar</button>
+        </form>
+    </div>
+</body>
+</html>

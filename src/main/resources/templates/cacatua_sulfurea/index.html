@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cacatúa Sulfurea</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            min-height: 100vh;
+        }
+        .game-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .board-section {
+            background-color: #16213e;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .board-table {
+            border-collapse: collapse;
+        }
+        .board-table td {
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            border: 1px solid #0f3460;
+            position: relative;
+        }
+        .cell-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cell-image {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        .panel-section {
+            background-color: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .direction-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 60px);
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .direction-btn {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            background-color: #e94560;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+        .direction-btn:hover {
+            background-color: #ff6b6b;
+        }
+        .direction-btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+        .btn-reiniciar {
+            background-color: #0f3460;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-reiniciar:hover {
+            background-color: #1a4a7a;
+        }
+        .energy-display {
+            font-size: 24px;
+            margin: 15px 0;
+            color: #e94560;
+        }
+        .status-display {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .status-victoria {
+            background-color: #28a745;
+        }
+        .status-derrota {
+            background-color: #dc3545;
+        }
+        .status-en-curso {
+            background-color: #ffc107;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div th:fragment="content">
+        <h1 style="text-align: center; padding: 20px;">Cacatúa Sulfurea</h1>
+
+        <div class="game-container">
+            <div class="board-section">
+                <div th:replace="~{cacatua_sulfurea/_tablero :: tablero}"></div>
+            </div>
+
+            <div class="panel-section">
+                <div th:replace="~{cacatua_sulfurea/_panel :: panel}"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
